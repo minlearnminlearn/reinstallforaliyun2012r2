@@ -2984,6 +2984,19 @@ install_windows() {
         cp -rf $drv/.Drivers/* $drv/aws/
     fi
 
+
+    # aliyun
+    if is_virt_contains kvm && is_dmi_contains Alibaba &&
+        [ "$arch_wim" = x86_64 ] &&
+        ! [ "$nt_ver" = 6.0 ]; then
+
+        download "https://windows-driver-cn-beijing.oss-cn-beijing.aliyuncs.com/virtio/220915.0953.0953_bin.zip" $drv/aliyunsignedvirtio.zip
+
+        unzip -o -d $drv $drv/aliyunsignedvirtio.zip
+        mkdir -p $drv/ali/
+        cp -rf $drv/win* $drv/Win* $drv/ali/
+    fi
+
     # xen
     # 没签名，暂时用aws的驱动代替
     # https://lore.kernel.org/xen-devel/E1qKMmq-00035B-SS@xenbits.xenproject.org/
