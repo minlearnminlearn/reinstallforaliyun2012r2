@@ -1,6 +1,8 @@
 <!-- markdownlint-disable MD028 MD033 MD045 -->
 
-# curl -O https://raw.githubusercontent.com/minlearnminlearn/reinstallforaliyun2012r2_fixed/main/reinstall.sh && bash reinstall.sh
+# not work
+curl -O https://raw.githubusercontent.com/minlearnminlearn/reinstallforaliyun2012r2_fixed/main/reinstall.sh
+bash reinstall.sh windows --iso 'https://drive.massgrave.dev/cn_windows_server_2012_r2_with_update_x64_dvd_6052725.iso' --image-name 'Windows Server 2012 R2 SERVERDATACENTER'
 
 
 # reinstall
