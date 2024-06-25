@@ -3006,7 +3006,8 @@ install_windows() {
     # x86 x86_64 arm64 都有
     # https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/
     if is_virt_contains kvm &&
-        ! is_virt_contains aws; then
+        ! is_virt_contains aws &&
+        ! is_dmi_contains Alibaba; then
 
         # 要区分 win10 / win11 驱动，虽然他们的 NT 版本号都是 10.0
         # 但他们可能用不同的编译器编译
