@@ -2992,9 +2992,8 @@ install_windows() {
 
         download "https://windows-driver-cn-beijing.oss-cn-beijing.aliyuncs.com/virtio/220915.0953.0953_bin.zip" $drv/aliyunsignedvirtio.zip
 
-        unzip -o -d $drv $drv/aliyunsignedvirtio.zip
         mkdir -p $drv/ali/
-        cp -rf $drv/win* $drv/Win* $drv/ali/
+        unzip $drv/aliyunsignedvirtio.zip -d $drv/ali/
     fi
 
     # xen
