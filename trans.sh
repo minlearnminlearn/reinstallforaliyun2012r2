@@ -2984,18 +2984,6 @@ install_windows() {
         cp -rf $drv/.Drivers/* $drv/aws/
     fi
 
-
-    # aliyun
-    if is_virt_contains kvm && is_dmi_contains Alibaba &&
-        [ "$arch_wim" = x86_64 ] &&
-        ! [ "$nt_ver" = 6.0 ]; then
-
-        download "https://windows-driver-cn-beijing.oss-cn-beijing.aliyuncs.com/virtio/220915.0953.0953_bin.zip" $drv/aliyunsignedvirtio.zip
-
-        mkdir -p $drv/ali/
-        unzip $drv/aliyunsignedvirtio.zip -d $drv/ali/
-    fi
-
     # xen
     # 没签名，暂时用aws的驱动代替
     # https://lore.kernel.org/xen-devel/E1qKMmq-00035B-SS@xenbits.xenproject.org/
@@ -3147,6 +3135,16 @@ install_windows() {
         unzip $drv/azure.zip -d $drv/azure/
     fi
 
+    # aliyun
+    if is_virt_contains kvm && is_dmi_contains Alibaba &&
+        [ "$arch_wim" = x86_64 ]; then
+
+        download "https://windows-driver-cn-beijing.oss-cn-beijing.aliyuncs.com/virtio/220915.0953.0953_bin.zip" $drv/aliyunsignedvirtio.zip
+
+        mkdir -p $drv/ali/
+        unzip $drv/aliyunsignedvirtio.zip -d $drv/ali/
+    fi
+
     # 修改应答文件
     download $confhome/windows.xml /tmp/autounattend.xml
     locale=$(get_selected_image_prop 'Default Language')
@@ -3225,6 +3223,7 @@ install_windows() {
     [ -d $drv/aws ] && cp_drivers $drv/aws
     [ -d $drv/xen ] && cp_drivers $drv/xen -ipath "*/$arch_xdd/*"
     [ -d $drv/azure ] && cp_drivers $drv/azure
+    [ -d $drv/ali ] && cp_drivers $drv/ali
     [ -d $drv/gce ] && {
         [ "$arch_wim" = x86 ] && gvnic_suffix=-32 || gvnic_suffix=
         cp_drivers $drv/gce/gvnic -ipath "*/win$nt_ver$gvnic_suffix/*"
