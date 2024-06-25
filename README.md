@@ -1,5 +1,8 @@
 <!-- markdownlint-disable MD028 MD033 MD045 -->
 
+# curl -O https://raw.githubusercontent.com/minlearnminlearn/reinstallforaliyun2012r2_fixed/main/reinstall.sh && bash reinstall.sh
+
+
 # reinstall
 
 [![Codacy](https://img.shields.io/codacy/grade/dc679a17751448628fe6d8ac35e26eed?logo=Codacy&label=Codacy)](https://app.codacy.com/gh/bin456789/reinstall/dashboard)
